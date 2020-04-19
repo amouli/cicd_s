@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="e2c12d8c-b6ea-4227-80aa-d5ba07f57687" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="cicFlow" doc:id="40014358-e98f-4972-ba99-a815b60b72be" >
+		<http:listener doc:name="Listener" doc:id="8ff849b0-4b54-40e0-bc5c-b100e96bd93e" config-ref="HTTP_Listener_config" path="/"/>
+		<set-payload value='#["this is first cicd"]' doc:name="Set Payload" doc:id="c76a0510-053e-4de2-a0b2-e296cb06c177" />
+		<logger level="INFO" doc:name="Logger" doc:id="98cd35ab-6e44-4568-b5dd-e635f0e2f250" message="#[payload]"/>
+		<logger level="INFO" doc:name="Logger" doc:id="2a784d72-acc3-463b-b367-ae3c86b7a571" message="#[payload]"/>
+		<logger level="INFO" doc:name="Logger" doc:id="2c5b255c-0580-4449-8a7d-2b123bf248f1" message="#[payload]"/>
+		<set-payload value='#["mule"]' doc:name="Set Payload" doc:id="5d5533ed-39bf-4530-b0d8-a36014e3deaf" />
+		<set-payload value='#["virat"]' doc:name="Set Payload" doc:id="4c47f449-d83d-4ef2-8743-2f06f6621641" />
+	</flow>
+</mule>
